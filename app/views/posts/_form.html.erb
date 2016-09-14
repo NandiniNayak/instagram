@@ -1,4 +1,4 @@
-<%= form_for(post) do |f| %>
+<%= simple_form_for(post) do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -17,7 +17,7 @@
   </div>
   <div class="form-inputs">
     <li>Upload Image</li>
-    <%=f.input :image, as: :file%>
+    <%=f.input :image,as: :file%>
   </div>
 
   <div class="actions">
