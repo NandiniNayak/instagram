@@ -15,6 +15,31 @@
       <tr>
         <td><%= post.description %></td>
         <td><%= image_tag(post.image_url,:width=>200,:height=>200)%></td>
+        <% if user_signed_in?%>
+          <% case current_user.voted_as_when_voted_for post %>
+            <% when true %>
+              <td><%= link_to like_post_path(post),method: :put do%>
+                    <i class="fa fa-heart-o"style="color:black;" aria-hidden="true"></i>
+                  <%end%>
+              </td>
+            <% when false %>
+              <td><%= link_to like_post_path(post),method: :put do%>
+                    <i class="fa fa-heart"style="color:red;" aria-hidden="true"></i>
+                  <%end%>
+              </td>
+              <td><%= post.get_upvotes.size%></td>
+            <% else%>
+              <td><%= link_to like_post_path(post),method: :put do%>
+                    <i class="fa fa-heart" style="color:red;" aria-hidden="true"></i>
+                  <%end%>
+              </td>
+              <td><%= post.get_upvotes.size%></td>
+          <%end%>
+        <%else%>
+            <td><i class="fa fa-heart" style="color:red;" aria-hidden="true"></i></td>
+        <%end%>
+
+
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

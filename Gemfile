@@ -11,6 +11,7 @@ gem 'acts_as_votable'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'simple_form'
+gem 'font-awesome-sass'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
